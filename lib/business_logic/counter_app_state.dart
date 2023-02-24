@@ -5,8 +5,6 @@ abstract class CounterAppState {}
 
 class CounterAppInitial extends CounterAppState {}
 
-class CounterChangedState extends CounterAppState {
-  final int counter;
+class CounterInitializationDoneState extends CounterAppState {}
 
-  CounterChangedState({required this.counter});
-}
+class CounterChangedState extends CounterAppState {}

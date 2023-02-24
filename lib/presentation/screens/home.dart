@@ -8,7 +8,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final blocInstance = BlocProvider.of<CounterAppBloc>(context);
+    final blocInstance = BlocProvider.of<CounterAppBloc>(
+      context,
+      listen: true,
+    );
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -29,27 +32,11 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            BlocConsumer<CounterAppBloc, CounterAppState>(
-              listener: (_, state) {},
-              builder: (context, state) {
-                if (state is CounterAppInitial) {
-                  return const Text(
-                    '0',
-                    style: TextStyle(
-                      fontSize: 25,
-                    ),
-                  );
-                } else if (state is CounterChangedState) {
-                  return Text(
-                    state.counter.toString(),
-                    style: const TextStyle(
-                      fontSize: 25,
-                    ),
-                  );
-                } else {
-                  return const SizedBox();
-                }
-              },
+            Text(
+              blocInstance.counterValue.toString(),
+              style: const TextStyle(
+                fontSize: 25,
+              ),
             ),
             const SizedBox(
               height: 8,
